@@ -2,7 +2,7 @@ use std::os::raw::c_char;
 
 #[link(name = "loopdynamo")]
 extern "C" {
-    fn ld_run_flow(json: *const c_char) -> *const c_char;
+    fn ld_run_flow(json: *const std::os::raw::c_char) -> *const std::os::raw::c_char;
 }
 
 #[tauri::command]
