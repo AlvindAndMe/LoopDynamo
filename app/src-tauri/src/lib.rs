@@ -1,4 +1,9 @@
-// Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+use std::os::raw::c_char;
+
+#[link(name = "loopdynamo")]
+extern "C" {
+    fn ld_run_flow(json: *const c_char) -> *const c_char;
+}
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -12,10 +17,6 @@ fn run_flow(json: String) -> String {
         let result = ld_run_flow(cstr.as_ptr());
         std::ffi::CStr::from_ptr(result).to_string_lossy().into_owned()
     }
-}
-
-extern "C" {
-    fn ld_run_flow(json: *const std::os::raw::c_char) -> *const std::os::raw::c_char;
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
