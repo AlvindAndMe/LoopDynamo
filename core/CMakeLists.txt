@@ -10,9 +10,3 @@ add_library(loopdynamo SHARED
     src/print_node.cpp
     src/api.cpp
 )
-
-add_executable(loopdynamo_test
-    src/main.cpp
-)
-
-target_link_libraries(loopdynamo_test loopdynamo)
