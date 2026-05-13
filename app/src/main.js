@@ -20,7 +20,6 @@ window.addEventListener("DOMContentLoaded", () => {
       greet();
     });
 
-  // Test your C++ engine
   invoke("run_flow", { json: "{}" })
     .then(result => console.log("C++ says:", result))
     .catch(err => console.error(err));
